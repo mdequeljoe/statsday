@@ -1,0 +1,74 @@
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    max-width: 1300px;
+    display:block;
+    margin: auto;
+}
+
+
+header {
+    display:block;
+}
+
+p {
+  font-size: 20px;
+}
+
+.group{
+    stroke: black;
+    stroke-width: 0.5;
+}
+.groupPos{
+    stroke: black;
+    stroke-width: 0.5;
+}
+.titles {
+    stroke-width: 0.0;
+}
+.chords {
+    fill:#A7B9E3;
+    stroke: black;
+    stroke-width: 0.5px;
+    opacity: .7;
+}
+.arrows {
+    fill:#4F81BD;
+    stroke: black;
+    stroke-width: 0.5px;
+    opacity: 0;
+}
+
+.progressBar {
+    stroke: black;
+    stroke-width: .15;
+}
+
+.highlight {
+    opacity : 0.5;
+    stroke-width: 1;
+}
+
+.column {
+    float: left;
+}
+#story {
+    width: 40%;
+    font-size: 150%;
+}
+
+#chartcol {
+    width: 60%;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media (max-width: 600px) {
+    .column {
+        width: 100%;
+        height: 100%;
+    }
+}
