@@ -35,20 +35,20 @@ async function frame_m3(){
 }
 
 async function frame_m4(){
-  await resolveFrame(m4_f1, 5000);
+  await resolveFrame(m4_f1, 2000);
   await resolveFrame(pauseFrame, 30000);
 }
 
 async function frame_m5(){
   await resolveFrame(m5, 2000);
-  await resolveFrame(pauseFrame, 18000);
+  await resolveFrame(pauseFrame, 20000);
 }
 
 async function runStory() {
   await intro();
-  await frame_m1();
+  await frame_m1(); 
   await frame_m2();  
-  await frame_m3(); 
+  await frame_m3();  
   await frame_m4();
   await frame_m5();
   runStory() 

@@ -29,7 +29,7 @@ var story = {
    step1 : "The second period covers the international financial turmoil up to 2010",
    step2 : "As compared to the previous period, the overall financing needs of the country were larger than before with those of the government reaching 10% of GDP",
    step3 : "To cover the financing gap, the financial sector stepped in, channeling funds to this sector",
-   step4: "This created a 'crowding out' effect as now less credit flowed to the private sector"
+   step4 : "This created a 'crowding out' effect as now less credit flowed to the private sector"
   },
   frame3 : {
     label : "2011 and 2012",
@@ -52,7 +52,7 @@ var story = {
     step2 : "Explore the source data at",
     link2 : "https://www.bportugal.pt/EstatisticasWeb/(S(uje0vmm1u1vmzt5514cdedzj))/Default.aspx?Lang=en-GB",
     link2Text : "Banco de Portugal",
-    step3 : "Find more financial accounts for more OECD countries at",
+    step3 : "Find more financial accounts data for OECD countries at",
     link3 : "http://stats.oecd.org/Index.aspx?DataSetCode=SNA_TABLE720R",
     link3Text : "OECD.stat"
   }

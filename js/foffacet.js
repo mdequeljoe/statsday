@@ -21,8 +21,6 @@ var facetSvg = d3.select("#chartcol #timeline").selectAll("div")
 var facetG = facetSvg
 .append("g")
 .attr("transform", "translate(" + facetWidth / 2 + "," + facetHeight / 1.5 + ")")
-// .attr("id", function(d, i){return "m" + (i + 1)})
-
 
 var barColors = ["#d7d9dd", "#a0a2a5"]
 facetSvg.selectAll("rect")

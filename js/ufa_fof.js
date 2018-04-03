@@ -181,10 +181,13 @@ function drawChords(matrix){
   .style("fill", function(d){
     return  d.value > 0 ? "#00AACC": "#FDAF18"
   })
-  .attr("id", function (d) {return "groupPos" + d.index; })
+  .attr("id", function (d) {
+    var type = d.value > 0 ? "A" : "L";
+    return "groupPos" + d.index + type;
+  })
   .attr("d", arc)
   .transition().duration(1000)
-  .attrTween("d", arcTween2(lastMatrix));
+  .attrTween("d", arc2Tween(lastMatrix));
   
   //group labels
   groupEnter.append("text")
@@ -339,7 +342,7 @@ function arcTween(last){
   }
 }
 
-function arcTween2(last){
+function arc2Tween(last){
   return function(d, i){
     if (!last){
       var si = d3.interpolate(d.startAngle, d.startAngle)
@@ -354,27 +357,6 @@ function arcTween2(last){
       d.startAngle = si(t)
       d.endAngle = ei(t);
       return arc2(d)
-    }
-  }
-}
-
-function arcTween1(last){
-  return function(d, i){
-    if (last){
-      var lg = last.groups
-      console.log(lg[d.index].startAngle, d.startAngle)
-      console.log(lg[d.index].endAngle, d.endAngle)
-      var si = d3.interpolate(lg[d.index].startAngle, d.startAngle)
-      var ei = d3.interpolate(lg[d.index].endAngle, d.endAngle)
-    } 
-    else {
-      var si = d3.interpolate(d.startAngle, d.startAngle)
-      var ei = d3.interpolate(d.startAngle, d.endAngle)
-    }
-    return function(t){
-      d.startAngle = si(t)
-      d.endAngle = ei(t);
-      return arc(d)
     }
   }
 }
