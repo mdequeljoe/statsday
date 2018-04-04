@@ -17,7 +17,7 @@ var addEvent = function(object, type, callback) {
   };
   
   //no annotations for small screens
-  addEvent(window, "resize", function(event) {
+  addEvent(window, "resize", function() {
     if (window.innerWidth < 1070){
       rm_ann("g.annotation-group");
       rm_ann("g.annotation-total");
@@ -25,10 +25,7 @@ var addEvent = function(object, type, callback) {
     }  
   });
 
-runStory();
-
-
-
-
+ runStory();
+//drawChords(m1)
 
 

@@ -1,6 +1,6 @@
 
-width = 775, 
-height =  500;
+var width = 775,  
+    height = 500;
 
 function calcSum(m){
   var s = 0
@@ -12,15 +12,16 @@ function calcSum(m){
   return s;
 }
 
-var svg = d3.select("#chartcol #chart").append("svg")
-.attr("preserveAspectRatio", "xMinYMin meet")
-.attr("viewBox", "0 0 500 500")
+var svg = d3.select("#chartcol #chart")
+.append("svg")
 .attr("width", width)
-.attr("height", height);
+.attr("height", height)
+.call(respond)
 
-var g = svg.append("g")
-.attr("transform", "translate(" + width / 2.25 + "," + height / 1.85 + ")")
+var g = svg
 .append("g")
+.attr("transform", "translate(" + width / 2.25 + "," + height / 1.85 + ")")
+.append("g"),
 
 outerRadius = Math.min(width, height) * 0.35,
 innerRadius = outerRadius - 20,
@@ -82,7 +83,6 @@ var annTotal = [
       type: "curve",
       curve: d3.curveNatural,
       points: [[-70, 20]]
-      //points: [[-50, 30], [-25, 45]]
     },
     x: 140,
     y: 240,
@@ -98,7 +98,6 @@ var annChord = [
       type: "curve",
       curve: d3.curveNatural,
       points: [[-70, 20]]
-      //points: [[-50, 30], [-25, 45]]
     },
     x: 215,
     y: 300,
@@ -114,7 +113,6 @@ var annotateGroup = d3.annotation()
 var annotateTotal = d3.annotation()
 .type(d3.annotationLabel)
 .annotations(annTotal)
-
 
 var annotateChord = d3.annotation()
 .type(d3.annotationLabel)
@@ -170,7 +168,9 @@ function drawChords(matrix){
   .data(calcPos(matrix))
   
   groupPos.exit().remove()
-  var groupPosEnter = groupPos.enter().append("g")
+  var groupPosEnter = groupPos
+  .enter()
+  .append("g")
   .attr("class", "groupPos");
   
   groupPosEnter.append("path")
@@ -186,7 +186,8 @@ function drawChords(matrix){
     return "groupPos" + d.index + type;
   })
   .attr("d", arc)
-  .transition().duration(1000)
+  .transition()
+  .duration(1000)
   .attrTween("d", arc2Tween(lastMatrix));
   
   //group labels
@@ -207,7 +208,8 @@ function drawChords(matrix){
     if (i == 2 || i == 8) return "start"
     return "middle"
   })
-  .transition().duration(1500)
+  .transition()
+  .duration(1500)
   .attr("x", function(d, i){
     var b = 50
     if (i == 2) b = 20
@@ -382,5 +384,27 @@ function calcPos(matrix){
   return totals
 }
 
+//found from here https://brendansudol.com/writing/responsive-d3
+function respond(svg, minw) {
+  if (typeof minw === "undefined") minw = 430;
+
+  var container = d3.select(svg.node().parentNode),
+      width = parseInt(svg.style("width")),
+      height = parseInt(svg.style("height")),
+      aspect = width / height;
+
+  svg.attr("viewBox", "0 0 " + width + " " + height)
+      .attr("preserveAspectRatio", "xMidYMid")
+      .call(resize);
+
+  d3.select(window).on("resize." + container.attr("id"), resize);
+
+  function resize() {
+      var w = parseInt(container.style("width"))
+      var targetWidth = w > minw ? w : minw;  
+      svg.attr("width", targetWidth);
+      svg.attr("height", Math.round(targetWidth / aspect));
+  }
+}
 
 

@@ -1,12 +1,13 @@
 
+console.log(window.height, window.innerHeight)
 
 var facetWidth = 180,
 facetHeight = 140,
 outerRadius2 = Math.min(facetWidth, facetHeight) * .2
 innerRadius2 = Math.min(facetWidth, facetHeight) * .18
 
-
-var facetSvg = d3.select("#chartcol #timeline").selectAll("div")
+var facetDiv = d3.select("#chartcol #timeline")
+.selectAll("div")
 .data([m1, m2, m3 ,m4])
 .enter()
 .append("div")
@@ -14,9 +15,10 @@ var facetSvg = d3.select("#chartcol #timeline").selectAll("div")
 .style("display", "inline-block")
 .style("width", facetWidth + "px")
 .style("height", facetHeight + "px")
-.append("svg")
-.attr("width", facetWidth)
-.attr("height", facetHeight)
+
+var facetSvg = facetDiv.append("svg")
+ .style("width", facetWidth)
+ .style("height", facetHeight) 
 
 var facetG = facetSvg
 .append("g")
@@ -34,9 +36,6 @@ facetSvg.selectAll("rect")
 .attr("width", function(d) { return d*.99;})
 .attr("height", 5)
 .attr("fill", function(d, i){return barColors[i];})
-
-
-
 
 
 var chord = d3.chord2()
@@ -61,8 +60,6 @@ var color = d3.scaleOrdinal()
 .range(["#4F81BD", "#929292"]);
 
 facetG.each(function(m, i){
-  
-  
   
   d3.select(this).append("text")
   .attr("y", -outerRadius2*1.5)
@@ -94,26 +91,7 @@ facetG.each(function(m, i){
   
   var groupPos = d3.select(this)
   .selectAll("g").append("g")
-  .data(function(){ 
-    var d = chord(m)
-    var totals = [];
-    for (i = 0; i < d.groups.length; i += 2) { 
-      span_a = d.groups[i].endAngle - d.groups[i].startAngle
-      span_l = d.groups[i+1].endAngle - d.groups[i+1].startAngle
-      var j = i;
-      if (span_l > span_a) {
-        j = i + 1
-      }
-      var netPosition = {
-        index: i,
-        startAngle: d.groups[j].startAngle,
-        endAngle: d.groups[j].startAngle + Math.abs(span_l - span_a),
-        value: d.groups[i].value - d.groups[i+1].value
-      }
-      totals.push(netPosition)
-    }
-    return totals
-  })
+  .data(calcPos(m))
   
   groupPos.append("path")
   .attr("class", function(d, i){
@@ -126,10 +104,3 @@ facetG.each(function(m, i){
   .attr("d", facetArc2)
   
 })
-
-
-
-
-
-
-

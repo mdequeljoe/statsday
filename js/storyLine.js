@@ -4,7 +4,7 @@ function resolveFrame(f, delay) {
   return new Promise(resolve => {
     setTimeout(() => {
       f();
-      resolve(1)
+      resolve(null)
     }, delay);
   });
 }
