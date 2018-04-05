@@ -1,15 +1,15 @@
 var story = {
   intro : {
-    label : "flow of funds",
+    label : "Flow of funds",
     step1 : "The flow of funds representation provides a picture of inter-sectoral patterns of an economy",
-    step2 : "lets look at four different phases of the evolution of the Portuguese economy using financial accounts data compiled by Banco de Portugal"
+    step2 : "Let's look at four different phases of the evolution of the Portuguese economy using financial accounts data compiled by Banco de Portugal"
   },
   intro1 : {
     label : "Intro",
     step1 : "The story begins in 2007; here the diagram shows the net flows between the main sectors of the Portuguese economy as well as the Rest of the World sector",
-    step2 : "the blue arcs represent the sectors' total holdings of financial assets, while the orange arcs represent their issuance of liabilities",
-    step3 : "the sectors' role as either a net lender or net borrower is represented by the outside arc which is the difference between financial assets and liabilities",
-    step4 : "since all financial assets (except monetary gold) must have a counterpart liability, the flows run from the asset arcs to the liability arcs"
+    step2 : "The blue arcs represent the sectors' total holdings of financial assets, while the orange arcs represent their issuance of liabilities",
+    step3 : "The sectors' role as either a net lender or net borrower is represented by the outside arc which is the difference between financial assets and liabilities",
+    step4 : "Since all financial assets (except monetary gold) must have a counterpart liability, the flows run from the asset arcs to the liability arcs"
   },
   frame1 : {
     label : "2000 - 2007",
@@ -25,7 +25,7 @@ var story = {
     step3 : "hence the vast majority of funding was coming from abroad"
   },
   frame2 : {
-   label : "2008-10",
+   label : "2008 - 2010",
    step1 : "The second period covers the international financial turmoil up to 2010",
    step2 : "As compared to the previous period, the overall financing needs of the country were larger than before with those of the government reaching 10% of GDP",
    step3 : "To cover the financing gap, the financial sector stepped in, channeling funds to this sector",
@@ -42,11 +42,11 @@ var story = {
     step1 : "The Assistance Programme to Portugal ended in 2014 and the flow of funds was very different as compared to previous periods",
     step2 : "Portugal became a net lender starting in 2012 and the government deficit decreased",
     step3 : "Non-financial corporations became net lenders as a consequence of a sharp decline in non-financial investments",
-    step4: "And households increased their saving rate as a result of a contraction in private consumption"
+    step4: "and households increased their saving rate as a result of a contraction in private consumption"
   },
   frame5 : {
-    label : "going further",
-    step1 : "learn more about financial accounts and the flow of funds by reading the",
+    label : "Going further",
+    step1 : "Learn more about financial accounts and the flow of funds by reading the",
     link1Text: "book",
     link1 : "http://www.oecd.org/publications/understanding-financial-accounts-9789264281288-en.htm",
     step2 : "Explore the source data at",
