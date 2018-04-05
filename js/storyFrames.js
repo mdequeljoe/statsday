@@ -250,8 +250,8 @@ function idGroup(id){
 function showGroup(id, delay){
 
     var id = idGroup(id);
-    var fill = id.no % 2 == 0 ? '#006BB6': '#F58221';
-    
+    var fill = id.no % 2 == 0 ? '#0095cc': '#F58221';
+
     d3.selectAll(id.tag)
     .transition()
     .delay(delay)

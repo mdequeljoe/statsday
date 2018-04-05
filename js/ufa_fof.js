@@ -118,7 +118,7 @@ var annotateChord = d3.annotation()
 .type(d3.annotationLabel)
 .annotations(annChord)
 
-if (window.innerWidth > 1400){
+if (window.innerWidth > 1360){
   d3.select("svg")
   .append("g")
   .attr("class", "annotation-group")

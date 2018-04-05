@@ -1,8 +1,8 @@
 
 var facetWidth = 180,
 facetHeight = 140,
-outerRadius2 = Math.min(facetWidth, facetHeight) * .2
-innerRadius2 = Math.min(facetWidth, facetHeight) * .18
+outerRadius2 = Math.min(facetWidth, facetHeight) * .23
+innerRadius2 = Math.min(facetWidth, facetHeight) * .20
 
 var facetDiv = d3.select("#chartcol #timeline")
 .selectAll("div")
@@ -20,7 +20,7 @@ var facetSvg = facetDiv.append("svg")
 
 var facetG = facetSvg
 .append("g")
-.attr("transform", "translate(" + facetWidth / 2 + "," + facetHeight / 1.5 + ")")
+.attr("transform", "translate(" + facetWidth / 2 + "," + facetHeight / 1.95 + ")")
 
 var barColors = ["#d7d9dd", "#a0a2a5"]
 facetSvg.selectAll("rect")
@@ -30,7 +30,7 @@ facetSvg.selectAll("rect")
 .attr("class", "progressBar")
 .attr("id", function(d, i){ return "bar" + (i + 1)})
 .attr("x", 0)
-.attr("y", facetHeight - 10)
+.attr("y", facetHeight - 25)
 .attr("width", function(d) { return d*.99;})
 .attr("height", 5)
 .attr("fill", function(d, i){return barColors[i];})
@@ -60,7 +60,7 @@ var color = d3.scaleOrdinal()
 facetG.each(function(m, i){
   
   d3.select(this).append("text")
-  .attr("y", -outerRadius2*1.5)
+  .attr("y", -outerRadius2 * 1.5)
   .attr("text-anchor", "middle")
   .text(function(){return titles[i]})
   
@@ -70,6 +70,7 @@ facetG.each(function(m, i){
   .append('path')
   .attr("class", "chords")
   .attr("d", facetRibbon)
+  .style("opacity", 0.5)
 
   const g = d3.select(this).selectAll('.group')
   .data(chord(m).groups)

@@ -5,7 +5,7 @@ document.addEventListener("visibilitychange", function(){
 
   //no annotations for small screens
 window.addEventListener("resize", function(){
-    if (window.innerWidth < 1400){
+    if (window.innerWidth < 1360){
         d3.select("g.annotation-group").remove();
         d3.select("g.annotation-total").remove();
         d3.select("g.annotation-chord").remove();
@@ -13,5 +13,4 @@ window.addEventListener("resize", function(){
   })
 
 runStory();
-
 
