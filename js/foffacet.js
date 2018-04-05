@@ -1,6 +1,4 @@
 
-console.log(window.height, window.innerHeight)
-
 var facetWidth = 180,
 facetHeight = 140,
 outerRadius2 = Math.min(facetWidth, facetHeight) * .2
