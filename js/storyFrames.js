@@ -28,6 +28,9 @@ function intro_f2_addText(){
 }
 
 function intro_reset(){
+    rm_ann("g.annotation-group", 5000);
+    rm_ann("g.annotation-total", 5000);
+    rm_ann("g.annotation-chord", 5000);
     resetAll(5000);
 }
 
@@ -145,11 +148,17 @@ function progressBar(id, t){
 }
 
 function clearProgressBars(t){
+    var  l = 4, td = t / l;
     d3.selectAll("svg rect#bar2")
-    .transition()
-    .ease(d3.easeLinear)
-    .duration(t)
-    .attr("width", 0)
+    .each(function(d, i){
+        var ri = l - (i + 1);
+        d3.select("div#m" + (ri + 1) + " svg rect#bar2")
+        .transition()
+        .ease(d3.easeLinear)
+        .delay(i * td)
+        .duration(td)
+        .attr("width", 0);
+    })
 }
 
 function setText(id, text, delay, t){
@@ -239,6 +248,7 @@ function idGroup(id){
 }
 
 function showGroup(id, delay){
+
     var id = idGroup(id);
     var fill = id.no % 2 == 0 ? '#006BB6': '#F58221';
     
@@ -252,6 +262,7 @@ function showGroup(id, delay){
 }
 
 function resetAll(delay, t){
+
     if (typeof delay === "undefined") delay = 3000;
     if (typeof t === "undefined") t = 1750;
     
@@ -267,7 +278,6 @@ function resetAll(delay, t){
     }
     highlight = [];
     
-    
     d3.selectAll(".chords")
     .transition()
     .delay(delay)
@@ -279,16 +289,7 @@ function resetAll(delay, t){
     .delay(delay)
     .duration(t)
     .style("opacity", 0)
-    
-    d3.selectAll(".annotations")
-    .transition()
-    .delay(delay)
-    .duration(t)
-    .style("opacity", 0)
 }
-
-
-
 
 function setLink(id, text, linkText, link, delay, t){
     if (typeof delay === "undefined") delay = 1000

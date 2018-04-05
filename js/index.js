@@ -25,7 +25,6 @@ var addEvent = function(object, type, callback) {
     }  
   });
 
- runStory();
-//drawChords(m1)
+runStory();
 
 
